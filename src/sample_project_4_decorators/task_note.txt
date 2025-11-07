@@ -1,0 +1,103 @@
+🧩 Project 1 — Logging and Timing Decorators (Best Practice in Action)
+
+File name: log_and_time_decorator.py
+
+Dataset / Summary
+
+You’ll simulate a small backend task (e.g., processing a list of transactions).
+You’ll write:
+
+A decorator that logs when a function starts and ends.
+
+A decorator that measures how long a function takes to run.
+
+Use them together on your “process transactions” function.
+
+This tests:
+
+Multiple decorators stacked together.
+
+Use of functools.wraps.
+
+Applying “best practice” decorator design (no global print abuse, no missing metadata).
+
+Hints
+
+Import functools and time.
+
+Create a decorator @log_activity(func) that prints when the function starts and ends, showing its name (func.__name__).
+
+Create another decorator @measure_time(func) that measures how long the function takes to complete using time.time().
+
+Decorate your main function as:
+
+@log_activity
+@measure_time
+def process_transactions(data):
+    ...
+
+
+Test with a sample list of 10–20 transactions and simulate processing with a small delay (e.g., time.sleep(0.2)).
+
+You should see output like:
+
+[LOG] Starting process_transactions
+[TIMER] process_transactions took 2.01 seconds
+[LOG] Finished process_transactions
+
+
+Then reflect on decorator order — which runs first?
+
+
+🧩 Project 2 — Safe File Context Manager + Decorator Integration
+
+File name: safe_file_decorator.py
+
+Dataset / Summary
+
+Build a custom context manager that safely writes to a log file (auto-closes and handles exceptions).
+Then, create a decorator that uses this context manager to log each function call (arguments and timestamp).
+
+This tests:
+
+Writing your own context manager (__enter__, __exit__).
+
+Using it inside a decorator.
+
+Practical use case of decorators for monitoring behaviour.
+
+Hints
+
+Define a class SafeFileWriter:
+
+class SafeFileWriter:
+    def __init__(self, filename):
+        self.filename = filename
+    def __enter__(self):
+        self.file = open(self.filename, 'a')
+        return self.file
+    def __exit__(self, exc_type, exc_value, traceback):
+        self.file.close()
+        if exc_type:
+            print(f"Error logged: {exc_value}")
+
+
+Define a decorator @log_to_file(filename) (a decorator factory) that:
+
+Opens the file using SafeFileWriter.
+
+Writes something like:
+
+Function foo() called at 2025-10-04 with args=(3,4)
+
+
+Apply this decorator to a function like:
+
+@log_to_file('activity_log.txt')
+def add_numbers(a, b):
+    return a + b
+
+
+Run the function a few times, then check that the log file has entries.
+
+Bonus: combine this with @measure_time from Project 1 to log both time and activity.

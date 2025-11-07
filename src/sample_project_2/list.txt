@@ -1,0 +1,171 @@
+📋 Practice Projects with Sample Datasets
+Dataclass-focused (first 5)
+
+employee_payroll.py
+
+employees = [
+    {"name": "Alice", "hours": 40, "rate": 25},
+    {"name": "Bob", "hours": 35, "rate": 20},
+    {"name": "Charlie", "hours": 45, "rate": 30}
+]
+
+
+Task: Create Employee dataclass with property weekly_pay = hours * rate. Print name: weekly_pay.
+
+penguin_stats.py
+
+penguins = [
+    {"species": "Adelie", "sex": "MALE", "body_mass": 3700},
+    {"species": "Gentoo", "sex": "FEMALE", "body_mass": 4500},
+    {"species": "Chinstrap", "sex": "MALE", "body_mass": 4000},
+    {"species": "Adelie", "sex": "FEMALE", "body_mass": 3200},
+]
+
+
+Task: Create Penguin dataclass. Use Counter to count penguins by species. Print top 2.
+
+weight_entry_ratios.py
+
+weight_log = [
+    ("Adelie", "FEMALE", 3400, 181),
+    ("Gentoo", "MALE", 5000, 220),
+    ("Chinstrap", "FEMALE", 3600, 195),
+    ("Adelie", "MALE", 3900, 190),
+]
+
+
+Task: Create WeightEntry dataclass with property mass_to_flipper_length_ratio. Build list and print first 5 ratios.
+
+movie_analytics.py
+
+movies = [
+    {"title": "Inception", "genre": "Sci-Fi", "length": 148, "rating": 8.8},
+    {"title": "Coco", "genre": "Animation", "length": 105, "rating": 8.4},
+    {"title": "Interstellar", "genre": "Sci-Fi", "length": 169, "rating": 8.6},
+]
+
+
+Task: Create Movie dataclass with property hours = length / 60. Use Counter for genres.
+
+city_weather.py
+
+weather_data = [
+    {"city": "Lagos", "temperature": 30, "rainfall": 120},
+    {"city": "London", "temperature": 15, "rainfall": 80},
+    {"city": "New York", "temperature": 20, "rainfall": 100},
+]
+
+
+Task: Create Weather dataclass with property temp_in_fahrenheit = temperature * 9/5 + 32. Print city, °C, °F.
+
+Remaining 10 projects (mixing all concepts)
+
+filter_customers.py
+
+customers = [
+    {"name": "John", "email": "john@example.com"},
+    {"name": "Jane", "email": ""},
+    {"name": "Sam", "email": None},
+]
+
+
+Task: Print names with truthy emails only.
+
+word_counter.py
+
+text = "data science is fun and data analysis is powerful"
+
+
+Task: Use Counter to count word frequency. Print top 5.
+
+student_subjects.py
+
+subjects = [
+    ("Alice", "Math"),
+    ("Alice", "Science"),
+    ("Bob", "History"),
+    ("Charlie", "Math"),
+]
+
+
+Task: Use defaultdict(list) to group subjects by student.
+
+city_coordinates.py
+
+cities = [
+    ("Lagos", 6.5244, 3.3792),
+    ("London", 51.5074, -0.1278),
+    ("Tokyo", 35.6895, 139.6917),
+]
+
+
+Task: Define City namedtuple. Print "City: (lat, lon)".
+
+book_genres.py
+
+books = [
+    {"title": "Book A", "genre": "Fiction"},
+    {"title": "Book B", "genre": "History"},
+    {"title": "Book C", "genre": "Fiction"},
+    {"title": "Book D", "genre": "Science"},
+]
+
+
+Task: Use Counter for genre counts. Use defaultdict(list) to group titles.
+
+user_profiles.py
+
+users = [
+    {"name": "Eve", "email": "eve@mail.com"},
+    {"name": "Adam", "email": ""},
+    {"name": "Zoe", "email": "zoe@mail.com"},
+]
+
+
+Task: Define User namedtuple. Print only users with truthy emails.
+
+penguin_research.py
+
+weight_log = [
+    ("Adelie", "MALE", 3700, 185),
+    ("Gentoo", "FEMALE", 5000, 220),
+    ("Chinstrap", "MALE", 4000, 200),
+    ("Adelie", "FEMALE", 3200, 180),
+]
+
+
+Task: Use Penguin dataclass with property ratio. Combine Counter for species and defaultdict to group ratios.
+
+genre_summary.py
+
+movies = [
+    {"title": "Inception", "genre": "Sci-Fi", "rating": 8.8},
+    {"title": "Coco", "genre": "Animation", "rating": 8.4},
+    {"title": "Interstellar", "genre": "Sci-Fi", "rating": 8.6},
+]
+
+
+Task: Define GenreSummary namedtuple with genre, count, avg_rating. Build summaries.
+
+sales_counter.py
+
+sales = ["Apple", "Banana", "Apple", "Orange", "Banana", "Apple"]
+
+
+Task: Use Counter to tally sales. Print top 3.
+
+team_roster.py
+
+players = [
+    ("Team A", "Alice"),
+    ("Team A", "Bob"),
+    ("Team B", "Charlie"),
+    ("Team B", "Dana"),
+]
+
+
+Task: Use defaultdict(list) to group players by team. Print rosters.
+
+✅ That’s the full set (15 projects) with datasets ready.
+
+✅ That’s 15 practice projects in total — first 5 about dataclasses, the rest progressively mixing in truthy/falsy, Counter, defaultdict, namedtuple, and combinations.

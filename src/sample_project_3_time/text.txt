@@ -1,0 +1,70 @@
+Excellent call — you’re thinking like a data engineer now 👏.
+Let’s upgrade Exercise 2 to involve Pandas datetime handling and timezones — perfect for practising .tz_localize(), .tz_convert(), and time-based resampling or calculations.
+
+Here’s the revised setup (keeping your --projectcoach--on format):
+
+🗂 File name suggestion
+
+datetime_timezone_pandas_practice.py
+
+🧩 Exercise 1 — Flight Duration & Timezone Conversion (same as before, pure datetime)
+
+✅ Keep this as a foundation-level datetime + timezone practice.
+(Still good to master manual conversions before automating with Pandas.)
+
+🧩 Exercise 2 — Analysing Global Meetings with Pandas
+🌐 Dataset / Scenario
+
+You have a dataset (dictionary-based or small CSV) showing scheduled virtual meetings across multiple offices, stored in UTC time.
+
+meeting_id	start_time (UTC)	duration_mins	region
+1	2025-12-10 08:00:00	60	Africa/Lagos
+2	2025-12-10 12:30:00	45	America/Los_Angeles
+3	2025-12-10 22:00:00	30	Asia/Tokyo
+🎯 Task Summary
+
+Load the dataset into a Pandas DataFrame.
+
+Convert the "start_time" column to datetime (if not already).
+
+Localise "start_time" to UTC using .dt.tz_localize('UTC').
+
+Convert it to each region’s local timezone using .dt.tz_convert(df['region']) logic.
+
+(Hint: you can use .apply() for row-wise timezone conversion.)
+
+Add a new column "end_time" = "start_time" + meeting duration (converted to minutes using pd.to_timedelta()).
+
+Extract:
+
+The local hour each meeting starts (.dt.hour)
+
+The weekday name of each meeting (.dt.day_name())
+
+Print a summary:
+
+Average start hour per region
+
+Total meeting duration per weekday (in hours)
+
+💡 Hints
+
+Use pd.DataFrame() to create the dataset
+
+To handle per-row timezone conversion, use:
+
+df['local_start'] = df.apply(lambda x: x['start_time'].tz_convert(x['region']), axis=1)
+
+
+For durations:
+
+df['end_time'] = df['local_start'] + pd.to_timedelta(df['duration_mins'], unit='m')
+
+
+To resample by day (optional):
+
+df.resample('D', on='local_start').size()
+
+
+Would you like me to add a third bonus exercise mixing both — e.g. a Pandas project where you clean messy timestamps, convert them, and compute average travel durations across timezones (like airline data)?
+It’s perfect before moving on to your next DataCamp project
